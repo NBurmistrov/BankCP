@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BankCP.Models.Accounts.DebitAccount>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Дебетовые счета</h1>
+
+<p>
+    @Html.ActionLink("Создать", "Create", "DebitAccount")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID дебетового счета</th>
+            <th scope="col">ID клиента</th>
+            <th scope="col">Номер счета</th>
+            <th scope="col">Баланс</th>
+            <th scope="col">Код валюты</th>
+            <th scope="col">Дата создания</th>
+            <th scope="col">дата закрытия</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <th>@account.DebitAccountId</th>
+                <td>@account.ClientId</td>
+                <td>@account.AccountNumber</td>
+                <td>@account.Balance</td>
+                <td>@account.СurrencyСode</td>
+                <td>@account.CreationDate</td>
+                <td>@account.ClosingDate</td>
+                <td>@Html.ActionLink("Удалить", "Delete", "DebitAccount", new { id = account.DebitAccountId})</td>
+                <td>@Html.ActionLink("Изменить", "Edit", "DebitAccount", new { id = account.DebitAccountId})</td>
+            </tr>
+        }
+    </tbody>
+</table>

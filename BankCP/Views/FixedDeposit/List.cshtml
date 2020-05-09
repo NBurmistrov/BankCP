@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BankCP.Models.Accounts.FixedDeposit>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Срочные вклады</h1>
+<div>
+    @Html.ActionLink("Создать", "Create", "FixedDeposit")
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID Вклада</th>
+            <th scope="col">ID клиента</th>
+            <th scope="col">номер счета</th>
+            <th scope="col">Процентная ставка</th>
+            <th scope="col">Минимальный взнос</th>
+            <th scope="col">Макисмальный взнос</th>
+            <th scope="col">Минимальный вывод средств</th>
+            <th scope="col">Макисмальный вывод средств</th>
+            <th scope="col">Код валюты</th>
+            <th scope="col">Дата создания</th>
+            <th scope="col">Дата закрытия</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var deposit in Model)
+        {
+            <tr>
+                <th>@deposit.TermDepositId</th>
+                <td>@deposit.ClientId</td>
+                <td>@deposit.AccountNumber</td>
+                <td>@deposit.Balance</td>
+                <td>@deposit.InterestRate</td>
+                <td>@deposit.MinDeposit</td>
+                <td>@deposit.MaxDeposit</td>
+                <td>@deposit.MinWithdrawal</td>
+                <td>@deposit.MaxWithdrawal</td>
+                <td>@deposit.CurrencyCode</td>
+                <td>@deposit.CreationDate</td>
+                <td>@deposit.ClosingDate</td>
+                <td>@Html.ActionLink("Удалить", "Delete", "FixedDeposit", new { id = deposit.TermDepositId })</td>
+                <td>@Html.ActionLink("Изменить", "Edit", "FixedDeposit", new { id = deposit.TermDepositId })</td>
+            </tr>
+        }
+    </tbody>
+</table>

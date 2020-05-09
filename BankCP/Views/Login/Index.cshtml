@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Login Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head{ <link href="~/css/custom/login.css" rel="stylesheet" />}
+    <div class="wrapper fade-in-down">
+        <div id="form-content">
+            <div class="fade-in icon">
+                <img src="" alt="User Icon" />
+            </div>           
+            <form method="post" action="/Login/Authorize">            
+                <input type="text" id="login" class="fade-in" name="userID" placeholder="login">
+                <input type="text" id="password" class="fade-in" name="password" placeholder="password">
+                <input type="submit" id="button" class="fade-in" value="Войти">                
+            </form>
+        </div>
+    </div>

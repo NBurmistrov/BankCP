@@ -1,0 +1,55 @@
+﻿@model BankCP.Models.Cards.DebitCard
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>DebitCard</h4>
+<hr />
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Edit", "DebitCard", FormMethod.Post))
+        {
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="DebitCardId" value="@Model.DebitCardId" />
+            <input type="hidden" name="DebitAccountId" value="@Model.DebitAccountId" />
+            <input type="hidden" name="ClientId" value="@Model.ClientId" />
+            <div class="form-group">
+                <label for="CardNumber" class="control-label">Номер карты</label>
+                <input name="CardNumber" class="form-control" value="@Model.CardNumber" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="CardVerification" class="control-label">CVC/CVV</label>
+                <input name="CardVerification" class="form-control" value="@Model.CardVerification" />
+                <span asp-validation-for="CardVerification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="ExpirationDate" class="control-label">Дата истечение срока</label>
+                <input name="ExpirationDate" class="form-control" value="@Model.ExpirationDate" />
+                <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="CreationDate" class="control-label">Дата создания</label>
+                <input name="CreationDate" class="form-control" value="@Model.CreationDate" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="ClosingDate" class="control-label">Дата закрытия</label>
+                <input name="ClosingDate" class="form-control" value="@Model.ClosingDate" />
+                <span asp-validation-for="ClosingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

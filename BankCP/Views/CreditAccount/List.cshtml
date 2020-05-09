@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BankCP.Models.Accounts.CreditAccount>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Создать", "Create", "CreditAccount")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID кредитного счета</th>
+            <th scope="col">ID клиента</th>
+            <th scope="col">Номер счета</th>
+            <th scope="col">Задолженность</th>
+            <th scope="col">Доступно средств</th>
+            <th scope="col">Дата беспроцентной оплаты</th>
+            <th scope="col">Код валюты</th>
+            <th scope="col">Дата создания</th>
+            <th scope="col">Дата закрытия</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <th>@account.CreditAccountId</th>
+                <td>@account.ClientId</td>
+                <td>@account.AccountNumber</td>
+                <td>@account.Debt</td>
+                <td>@account.MeansAvailable</td>
+                <td>@account.PaymentDate</td>
+                <td>@account.CurrencyCode</td>
+                <td>@account.CreationDate</td>
+                <td>@account.ClosingDate</td>                
+                <td>@Html.ActionLink("Удалить", "Delete", "DebitAccount", new { id = account.CreditAccountId})</td>
+                <td>@Html.ActionLink("Изменить", "Edit", "DebitAccount", new { id = account.CreditAccountId })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

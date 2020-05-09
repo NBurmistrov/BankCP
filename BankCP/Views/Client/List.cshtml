@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BankCP.Models.Users.Client>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Клиенты</h1>
+
+<p>
+    @Html.ActionLink("Создать","Create", "Client")
+</p>
+<table class="table">
+<thead>
+    <tr>
+        <th scope="col">Id клиента</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Отчество</th>
+        <th scope="col">Номер паспорта</th>
+        <th scope="col">День рождения</th>
+        <th scope="col">Адрес</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var client in Model)
+    {
+        <tr>
+            <th>@client.ClientId</th>
+            <td>@client.Name</td>
+            <td>@client.Surname</td>
+            <td>@client.Patronymic</td>
+            <td>@client.PassportNumber</td>
+            <td>@client.Birthday</td>
+            <td>@client.Address</td>            
+            <td>@Html.ActionLink("Удалить", "Delete", "Client", new { id = client.ClientId})</td>
+            <td>@Html.ActionLink("Изменить", "Edit", "Client", new { id = client.ClientId })</td>
+        </tr>
+    }
+</tbody>
+</table>

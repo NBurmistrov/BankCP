@@ -1,0 +1,55 @@
+﻿@model BankCP.Models.Accounts.DebitAccount
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>DebitAccount</h4>
+<hr />
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Edit", "DebitAccount", FormMethod.Post))
+        {
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="DebitAccountId" value="@Model.DebitAccountId"/>
+            <input type="hidden" name="ClientId" value="@Model.ClientId">
+            <div class="form-group">
+                <label for="AccountNumber" class="control-label"></label>
+                <input name="AccountNumber" class="form-control" value="@Model.AccountNumber"/>
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Balance" class="control-label"></label>
+                <input name="Balance" class="form-control" value="@Model.Balance"/>
+                <span asp-validation-for="Balance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="СurrencyСode" class="control-label"></label>
+                <input name="CurrencyСode" class="form-control" value="@Model.СurrencyСode"/>
+                <span asp-validation-for="СurrencyСode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="CreationDate" class="control-label"></label>
+                <input name="CreationDate" class="form-control" value="@Model.CreationDate"/>
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="ClosingDate" class="control-label"></label>
+                <input name="ClosingDate" class="form-control" value="@Model.ClosingDate"/>
+                <span asp-validation-for="ClosingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>        
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "List", "DebitAccount")
+</div>
+

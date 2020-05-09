@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/js/jquery/jquery.min.js"></script>
+    <script src="~/js/popper.js/umd/popper.min.js"></script>
+    <link href="~/css/bootsrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/custom/main.css" rel="stylesheet" />
+    <script src="~/js/bootsrap/bootstrap.min.js"></script>
+    @if (IsSectionDefined("head"))
+        @RenderSection("head", required: false)    
+</head>
+<body>
+    @if (BankCP.Controllers.LoginController.isAuthorized)
+    {
+    <nav class="navbar navbar-expand navbar-dark bg-dark h-50px">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/List">Клиенты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/DebitCard/List">Дебетовые карты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/CreditCard/List">Кредитные карты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/DebitAccount/List">Дебетовые счета</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/CreditAccount/List">Кредитные счета</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/FixedDeposit/List">Вклады</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Logs/List">Логи</a>
+            </li>
+        </ul>
+    </nav>
+    }    
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+@if (IsSectionDefined("script"))
+    @RenderSection("script", required: false)
+</html>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BankCP.Models.Cards.CreditCard>
+
+@{
+    ViewData["Title"] = "Credit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Создать", "Create", "CreditCard")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id кредитной карты</th>
+            <th scope="col">Id кредитного счёта</th>
+            <th scope="col">Id клиента</th>
+            <th scope="col">Номер карты</th>
+            <th scope="col">CVC/CVV</th>
+            <th scope="col">Дата окончания</th>
+            <th scope="col">Дата выпуска</th>
+            <th scope="col">Дата закрытия</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var card in Model)
+        {
+            <tr>
+                <th>@card.CreditCardId</th>
+                <td>@card.CreditAccountId</td>
+                <td>@card.ClientId</td>
+                <td>@card.CardNumber</td>
+                <td>@card.CardVerification</td>
+                <td>@card.ExpirationDate</td>
+                <td>@card.CreationDate</td>
+                <td>@card.ClosingDate</td>
+                <td>@Html.ActionLink("Удалить", "Delete", "CreditCard", new { id = card.CreditCardId })</td>
+                <td>@Html.ActionLink("Изменить", "Edit", "CreditCard", new { id = card.CreditCardId })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

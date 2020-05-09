@@ -1,0 +1,66 @@
+﻿@model BankCP.Models.Cards.CreditCard
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Создать", "Create", "CreditCard")
+</p>
+<hr />
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Add", "CreditCard", FormMethod.Post))
+        {
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="CreditCardId" class="control-label">ID кредитной карты</label>
+                <input name="CreditCardId" class="form-control" />
+                <span asp-validation-for="CreditCardId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="CreditAccountId" class="control-label">ID кредитного счета</label>
+                <input name="CreditAccountId" class ="form-control">
+            </div>
+            <div class="form-group">
+                <label for="ClientId" class="control-label">ID клиента</label>
+                <input name="ClientId" class ="form-control" >
+            </div>
+            <div class="form-group">
+                <label for="CardNumber" class="control-label">Номер карты</label>
+                <input name="CardNumber" class="form-control" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="CardVerification" class="control-label">CVC/CVV</label>
+                <input name="CardVerification" class="form-control" />
+                <span asp-validation-for="CardVerification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="ExpirationDate" class="control-label">Даты истечения срока</label>
+                <input name="ExpirationDate" class="form-control" />
+                <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="CreationDate" class="control-label">Дата создания</label>
+                <input name="CreationDate" class="form-control" value="@DateTime.Now"/>
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="ClosingDate" class="control-label"></label>
+                <input name="ClosingDate" class="form-control" />
+                <span asp-validation-for="ClosingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        }        
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "List", "CreditCard")
+</div>
+
