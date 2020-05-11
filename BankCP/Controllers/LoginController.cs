@@ -16,8 +16,9 @@ namespace BankCP.Controllers
         }
         private readonly IConfiguration configuration;
         private readonly DBManager dbManager;
+        public static string UserID  { get; private set; }
         public static bool isAuthorized { get; private set; } = false;
-        public IActionResult Index() => View("Index");
+        public IActionResult Index() => View();
 
         [HttpPost]
         public ActionResult Authorize(string userID, string password)
@@ -29,8 +30,9 @@ namespace BankCP.Controllers
             isAuthorized = dbManager.IsConnectionStringAvaliable(cs) ? true : false;
 
             if (isAuthorized)
-            {
+            {   
                 configuration.GetSection("ConnectionStrings")["Bank"] = cs;
+                UserID = userID;
                 return RedirectToAction("Index", "Home");
             }
             else
